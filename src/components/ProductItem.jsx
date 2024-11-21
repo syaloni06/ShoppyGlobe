@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const ProductItem = (props) => {
   const dispatch = useDispatch();
-
+  console.log(props);
   // Access the cart items from the Redux store
   const cartItems = useSelector((state) => state.cart.data);
 
@@ -14,7 +14,7 @@ const ProductItem = (props) => {
   const productInCart = cartItems.find((item) => item.id === props.product.id);
 
   return (
-    <div className="w-60 bg-white m-5 flex flex-col rounded-lg shadow-lg hover:shadow-sky-600 hover:scale-105 overflow-hidden border-2 hover:border-sky-600">
+    <div className="w-60 bg-white m-5 flex flex-col rounded-lg shadow-lg hover:shadow-sky-600 hover:scale-105 overflow-hidden border-2 hover:border-sky-500">
       {/* Link wrapping the card */}
       <Link to={`/product/${props.product.id}`} state={{ product: props.product }}>
         {/* Product Image */}
@@ -52,10 +52,10 @@ const ProductItem = (props) => {
       {/* Add to Cart Button */}
       <div className="p-2">
         {productInCart?.quantity > 0 ? (
-          <div>Added to the cart</div>
+          <div className="text-green-600 font-semibold">Added to the cart</div>
         ) : (
           <button
-            className="text-base text-white bg-sky-600 w-full p-1 rounded-md font-bold"
+            className="text-base text-white bg-sky-600 hover:bg-sky-700 w-full p-1 rounded-md font-bold"
             onClick={() => dispatch(addItem(props.product))}
           >
             Add To Cart
