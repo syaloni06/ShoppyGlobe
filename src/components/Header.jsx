@@ -5,12 +5,25 @@ import { FaCartShopping } from "react-icons/fa6";
 import { FaSearch } from "react-icons/fa";
 import { useContext } from "react";
 import { SearchContext } from "../utils/SearchContext.jsx";
+import { ProductListContext } from "../utils/ProductListContext.jsx";
 const Header = () => {
   const { searchTerm, setSearchTerm } = useContext(SearchContext);
+  const { productList, setProductList} = useContext(ProductListContext);
+
+  const searchProduct = () => {
+    const searchedProduct = productList.filter((product) => {
+      const matchesSearch = searchTerm
+        ? product.title?.toLowerCase().includes(searchTerm.toLowerCase()) 
+        : true; // If no search term, return all books
+      return matchesSearch;
+    });
+    setProductList(searchedProduct);
+    // setSearchTerm(""); 
+  }
   return (
     <>
       <div className="flex justify-between bg-white text-sky-500 shadow-lg top-0 fixed w-full z-50 h-10 sm:h-16">
-        <Link to={"/"} className="flex items-center text-lg sm:text-3xl font-bold italic mx-4 sm:mx-6">
+        <Link to={"/"} onClick={() => setSearchTerm("")} className="flex items-center text-lg sm:text-3xl font-bold italic mx-4 sm:mx-6">
           <FaShopify className="self-center" />
           hoppyGl
           <FaGlobeAsia className="self-center" />
@@ -26,7 +39,7 @@ const Header = () => {
             placeholder="Search for products"
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <button className="absolute right-2 top-1/2 transform -translate-y-1/2 text-sky-500 rounded-full h-8 w-8 flex items-center justify-center text-xl hover:scale-110">
+          <button className="absolute right-2 top-1/2 transform -translate-y-1/2 text-sky-500 rounded-full h-8 w-8 flex items-center justify-center text-xl hover:scale-110" onClick={searchProduct}>
             <FaSearch />
           </button>
         </div>

@@ -1,19 +1,25 @@
-import { useEffect, useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useContext, useState } from "react";
 import useFetch from "../utils/useFetch";
 import ProductItem from "./ProductItem";
-
-const ProductList = () => {
-  const [productList, setProductList] = useState([]);
+// import { ProductListContext } from "../utils/ProductListContext";
+import { SearchContext } from "../utils/SearchContext.jsx";
+const ProductList = () => { 
+  const { searchTerm } = useContext(SearchContext);
+  // const { productList, setProductList} = useContext(ProductListContext);
+ const [products, setProducts] = useState([]);
+ const [filteredProducts, setFilteredProducts] = useState([]);
   // function filterSearchList(filteredSearchBook){
   //   setFilterBook(filteredSearchBook);
   // }
   const { data, error, loading } = useFetch("https://dummyjson.com/products?limit=50");
   useEffect(() => {
     if (data) {
-      setProductList(data.products);
+      setProducts(data.products);
       // console.log(data);
+      setFilteredProducts(data.products);
     }
-  }, [data]);
+  },[data]);
   if (error) {
     return <p>Error in loading Data: {error}</p>;
   }
@@ -23,7 +29,7 @@ const ProductList = () => {
   return (
     <>
       <div className="flex flex-wrap justify-center mt-20">
-        {productList.map((product) => (
+        {filteredProducts.map((product) => (
           <ProductItem product={product} key={product.id} />
         ))}
       </div>

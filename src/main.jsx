@@ -10,6 +10,7 @@ import Checkout from "./components/Checkout.jsx";
 import NotFound from "./components/NotFound.jsx";
 import { RouterProvider } from "react-router-dom";
 import { SearchProvider } from "./utils/SearchContext.jsx";
+import { ProductListProvider } from "./utils/ProductListContext.jsx";
 const appRouter = createBrowserRouter([
   {
     path: "/",
@@ -37,10 +38,10 @@ const appRouter = createBrowserRouter([
 ]);
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <SearchProvider>
-      <RouterProvider router={appRouter} />
-    </SearchProvider>
+    <ProductListProvider>
+      <SearchProvider>
+        <RouterProvider router={appRouter} />
+      </SearchProvider>
+    </ProductListProvider>
   </StrictMode>
 );
-
-
