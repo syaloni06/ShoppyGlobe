@@ -7,13 +7,11 @@ const ProductList = () => {
   // function filterSearchList(filteredSearchBook){
   //   setFilterBook(filteredSearchBook);
   // }
-  const { data, error, loading } = useFetch(
-    "https://dummyjson.com/products?limit=50"
-  );
+  const { data, error, loading } = useFetch("https://dummyjson.com/products?limit=50");
   useEffect(() => {
     if (data) {
       setProductList(data.products);
-      console.log(data);
+      // console.log(data);
     }
   }, [data]);
   if (error) {
@@ -24,10 +22,10 @@ const ProductList = () => {
   }
   return (
     <>
-      <div>
-        {productList.map((product) => {
-          <ProductItem product={product} key={product.id} />;
-        })}
+      <div className="flex flex-wrap justify-center mt-20">
+        {productList.map((product) => (
+          <ProductItem product={product} key={product.id} />
+        ))}
       </div>
     </>
   );
