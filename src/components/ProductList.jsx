@@ -28,7 +28,7 @@ const ProductList = () => {
   }
   return (
     <>
-      <div className="flex flex-wrap justify-center mt-20">
+      <div className="flex flex-wrap justify-center my-20">
         {filteredProducts.map((product) => (
           <ProductItem product={product} key={product.id} />
         ))}
