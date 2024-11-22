@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FaShopify } from "react-icons/fa";
 import { FaGlobeAsia } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
@@ -6,12 +6,14 @@ import { FaSearch } from "react-icons/fa";
 import { useContext } from "react";
 import { SearchContext } from "../utils/SearchContext.jsx";
 import { ProductListContext } from "../utils/ProductListContext.jsx";
+import useFetch from "../utils/useFetch.js";
 const Header = () => {
   const { searchTerm, setSearchTerm } = useContext(SearchContext);
-  const { productList, setProductList} = useContext(ProductListContext);
-
+  const {setProductList} = useContext(ProductListContext);
+  const { data } = useFetch("https://dummyjson.com/products?limit=50");
+  const location = useLocation();
   const searchProduct = () => {
-    const searchedProduct = productList.filter((product) => {
+    const searchedProduct = data.products.filter((product) => {
       const matchesSearch = searchTerm
         ? product.title?.toLowerCase().includes(searchTerm.toLowerCase()) 
         : true; // If no search term, return all books
@@ -29,7 +31,7 @@ const Header = () => {
           <FaGlobeAsia className="self-center" />
           be
         </Link>
-        <div className="relative w-full sm:w-2/3 self-center">
+        {location.pathname === "/" && <div className="relative w-full sm:w-2/3 self-center">
           <input
             className="rounded-2xl p-2 h-10 border-2 border-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-600 w-full px-4 pr-10" 
             type="text"
@@ -42,7 +44,7 @@ const Header = () => {
           <button className="absolute right-2 top-1/2 transform -translate-y-1/2 text-sky-500 rounded-full h-8 w-8 flex items-center justify-center text-xl hover:scale-110" onClick={searchProduct}>
             <FaSearch />
           </button>
-        </div>
+        </div>}
 
         <div className="flex items-center space-x-4 sm:space-x-10 mr-4 lg:mr-8 ">
           <Link

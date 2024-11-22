@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 
 const ProductItem = (props) => {
   const dispatch = useDispatch();
-  console.log(props);
   // Access the cart items from the Redux store
   const cartItems = useSelector((state) => state.cart.data);
 
