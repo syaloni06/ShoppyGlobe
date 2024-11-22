@@ -34,7 +34,7 @@ const Cart = () => {
         {cartItems && cartItems.length > 0 && (
           <div className="p-4 bg-gray-100 rounded-lg shadow-md h-48 flex flex-col justify-center gap-10">
             <div className="flex gap-3">
-              <p className="text-2xl font-bold text-gray-700">Cart Total:</p>
+              <p className="text-2xl font-bold text-gray-700">Total Amount:</p>
               <p className="text-2xl font-bold text-green-600">${cartTotal}</p>
             </div>
             <Link to={"/checkout"}>

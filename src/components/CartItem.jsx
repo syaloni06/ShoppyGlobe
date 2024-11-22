@@ -7,7 +7,7 @@ const CartItem = (props) => {
   const dispatch = useDispatch();
   console.log(props);
   return (
-    <div className="flex items-center justify-between bg-white rounded-lg shadow-lg border-2 p-16 mb-4">
+    <div className="flex items-center justify-between bg-white hover:bg-gray-100 rounded-lg shadow-lg border-2 p-16 mb-4">
       {/* Thumbnail */}
       <div className="w-1/4">
         <img
