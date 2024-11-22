@@ -1,16 +1,20 @@
-import { StrictMode } from "react";
+/* eslint-disable no-unused-vars */
+/* eslint-disable react-refresh/only-export-components */
+import React, { lazy, StrictMode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
 import { createBrowserRouter } from "react-router-dom";
-import ProductDetail from "./components/ProductDetail.jsx";
-import Cart from "./components/Cart.jsx";
 import ProductList from "./components/ProductList.jsx";
-import Checkout from "./components/Checkout.jsx";
 import NotFound from "./components/NotFound.jsx";
 import { RouterProvider } from "react-router-dom";
 import { SearchProvider } from "./utils/SearchContext.jsx";
 import { ProductListProvider } from "./utils/ProductListContext.jsx";
+
+// Lazy load the product detail component
+const ProductDetail = lazy(() => import("./components/ProductDetail.jsx"));
+const Cart = lazy(() => import("./components/Cart.jsx"));
+const Checkout = lazy(() => import("./components/Checkout.jsx"));
 const appRouter = createBrowserRouter([
   {
     path: "/",
@@ -22,20 +26,33 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/product/:id",
-        element: <ProductDetail />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <ProductDetail />
+          </Suspense>
+        ),
       },
       {
         path: "/cart",
-        element: <Cart />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <Cart />
+          </Suspense>
+        ),
       },
       {
         path: "/checkout",
-        element: <Checkout />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <Checkout />
+          </Suspense>
+        ),
       },
     ],
     errorElement: <NotFound />,
   },
 ]);
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <ProductListProvider>
