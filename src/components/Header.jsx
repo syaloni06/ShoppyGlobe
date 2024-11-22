@@ -24,7 +24,7 @@ const Header = () => {
   }
   return (
     <>
-      <div className="flex justify-between bg-white text-sky-500 shadow-lg top-0 fixed w-full z-50 h-10 sm:h-16">
+      <div className="flex justify-between bg-white text-sky-600 shadow-lg top-0 fixed w-full z-50 h-10 sm:h-16">
         <Link to={"/"} onClick={() => setSearchTerm("")} className="flex items-center text-lg sm:text-3xl font-bold italic mx-4 sm:mx-6">
           <FaShopify className="self-center" />
           hoppyGl
@@ -33,7 +33,7 @@ const Header = () => {
         </Link>
         {location.pathname === "/" && <div className="relative w-full sm:w-2/3 self-center">
           <input
-            className="rounded-2xl p-2 h-10 border-2 border-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-600 w-full px-4 pr-10" 
+            className="rounded-2xl p-2 h-10 border-2 text-black border-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-600 w-full px-4 pr-10" 
             type="text"
             name="task"
             value={searchTerm}
@@ -41,7 +41,7 @@ const Header = () => {
             placeholder="Search for products"
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <button className="absolute right-2 top-1/2 transform -translate-y-1/2 text-sky-500 rounded-full h-8 w-8 flex items-center justify-center text-xl hover:scale-110" onClick={searchProduct}>
+          <button className="absolute right-2 top-1/2 transform -translate-y-1/2 text-sky-600 rounded-full h-8 w-8 flex items-center justify-center text-xl hover:scale-110" onClick={searchProduct}>
             <FaSearch />
           </button>
         </div>}

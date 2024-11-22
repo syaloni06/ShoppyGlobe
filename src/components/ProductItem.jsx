@@ -3,7 +3,7 @@ import { FaStar } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../utils/cartSlice";
 import { Link } from "react-router-dom";
-
+import { FaCartPlus } from "react-icons/fa";
 const ProductItem = (props) => {
   const dispatch = useDispatch();
   // Access the cart items from the Redux store
@@ -13,7 +13,7 @@ const ProductItem = (props) => {
   const productInCart = cartItems.find((item) => item.id === props.product.id);
 
   return (
-    <div className="w-60 bg-white m-5 flex flex-col rounded-lg shadow-lg hover:shadow-sky-600 hover:scale-105 overflow-hidden border-2 hover:border-sky-500">
+    <div className="w-60 bg-white m-5 p-1 flex flex-col rounded-lg shadow-lg hover:shadow-sky-600 hover:scale-105 overflow-hidden border-2 hover:border-sky-500">
       {/* Link wrapping the card */}
       <Link to={`/product/${props.product.id}`} state={{ product: props.product }}>
         {/* Product Image */}
@@ -54,10 +54,10 @@ const ProductItem = (props) => {
           <div className="text-green-600 font-semibold">Added to the cart</div>
         ) : (
           <button
-            className="text-base text-white bg-sky-600 hover:bg-sky-700 w-full p-1 rounded-md font-bold"
+            className="flex gap-2 justify-center text-base text-white bg-sky-600 hover:bg-sky-700 w-full p-1 rounded-md font-bold"
             onClick={() => dispatch(addItem(props.product))}
           >
-            Add To Cart
+            Add To Cart <FaCartPlus className="text-xl self-center"/>
           </button>
         )}
       </div>

@@ -3,6 +3,7 @@ import CartItem from "./CartItem";
 import { useEffect, useState } from "react";
 import { BsSendCheckFill } from "react-icons/bs";
 import { MdRemoveShoppingCart } from "react-icons/md";
+import { Link } from "react-router-dom";
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.data);
   const [cartTotal, setCartTotal] = useState();
@@ -29,7 +30,6 @@ const Cart = () => {
             </>
           )}
         </div>
-
         {/* Cart Total Section */}
         {cartItems && cartItems.length > 0 && (
           <div className="p-4 bg-gray-100 rounded-lg shadow-md h-48 flex flex-col justify-center gap-10">
@@ -37,9 +37,11 @@ const Cart = () => {
               <p className="text-2xl font-bold text-gray-700">Cart Total:</p>
               <p className="text-2xl font-bold text-green-600">${cartTotal}</p>
             </div>
+            <Link to={"/checkout"}>
             <button className="flex gap-2 justify-center text-white text-xl bg-sky-600 hover:bg-sky-700 w-full py-3 rounded-md font-bold">
               Checkout <BsSendCheckFill className="text-2xl" />
             </button>
+            </Link>
           </div>
         )}
       </div>

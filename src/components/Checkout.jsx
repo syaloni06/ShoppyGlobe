@@ -1,16 +1,15 @@
-
-
+import { BsSendCheckFill } from "react-icons/bs";
 const CheckoutPage = () => {
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center py-10">
-      <div className="w-full max-w-4xl bg-white rounded-lg shadow-lg p-8">
-        <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">
-          Checkout
+    <div className="min-h-screen bg-gray-100 flex flex-col items-center py-24">
+      <div className="w-1/2 max-w-4xl bg-white rounded-lg shadow-lg p-8 border-2 hover:border-sky-500 hover:shadow-sky-600">
+        <h1 className="flex gap-2 justify-center italic text-3xl font-bold text-sky-600 mb-6 text-center">
+          Checkout <BsSendCheckFill className="self-center" />
         </h1>
         <form className="space-y-6">
           {/* Personal Information */}
           <div>
-            <h2 className="text-xl font-semibold text-gray-700 mb-4">
+            <h2 className="text-xl font-semibold text-sky-600 mb-4">
               Personal Information
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -39,7 +38,7 @@ const CheckoutPage = () => {
 
           {/* Shipping Information */}
           <div>
-            <h2 className="text-xl font-semibold text-gray-700 mb-4">
+            <h2 className="text-xl font-semibold text-sky-600 mb-4">
               Shipping Address
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -78,7 +77,7 @@ const CheckoutPage = () => {
 
           {/* Payment Information */}
           <div>
-            <h2 className="text-xl font-semibold text-gray-700 mb-4">
+            <h2 className="text-xl font-semibold text-sky-600 mb-4">
               Payment Details
             </h2>
             <div className="space-y-4">

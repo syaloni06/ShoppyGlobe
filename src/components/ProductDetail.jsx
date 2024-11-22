@@ -5,6 +5,7 @@ import { FaStar } from "react-icons/fa6";
 import { TbTruckReturn } from "react-icons/tb";
 import { AiTwotoneSafetyCertificate } from "react-icons/ai";
 import { IoArrowBackCircle } from "react-icons/io5";
+import { FaCartPlus } from "react-icons/fa";
 const ProductDetail = () => {
   const { id } = useParams();
   const location = useLocation();
@@ -28,7 +29,7 @@ const ProductDetail = () => {
   return (
     <>
       <div className="flex justify-center items-center min-h-screen bg-gray-100">
-        <div className="flex flex-col mx-10 w-1/2 bg-white rounded-lg shadow-lg border-2 hover:border-sky-500 p-5 my-20">
+        <div className="flex flex-col mx-10 w-1/2 bg-white rounded-lg shadow-lg border-2 hover:border-sky-500 hover:shadow-sky-500 p-5 my-20">
           {/* Back button to navigate to the previous page */}
           <button
             onClick={() => navigate(-1)} // When clicked, navigate to the previous page
@@ -64,10 +65,10 @@ const ProductDetail = () => {
                 </p>
               ) : (
                 <button
-                  className="text-white bg-sky-600 hover:bg-sky-700 w-full py-2 rounded-md font-bold"
+                  className="flex justify-center gap-2 text-white bg-sky-600 hover:bg-sky-700 w-full py-2 rounded-md font-bold"
                   onClick={() => dispatch(addItem(product))}
                 >
-                  Add To Cart
+                  Add To Cart <FaCartPlus className="text-xl self-center"/>
                 </button>
               )}
             </div>
