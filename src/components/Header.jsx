@@ -36,7 +36,7 @@ const Header = () => {
             setSearchFlag(!searchFlag); // Toggle search flag on logo click
             setSearchTerm(""); // Reset search term
           }}
-          className="flex items-center text-base sm:text-3xl font-bold italic mx-2 sm:mx-6"
+          className="flex items-center text-2xl lg:text-3xl font-bold italic mx-2 sm:mx-6"
         >
           <FaShopify className="text-4xl xl:text-5xl text-sky-600" />{/* Shopify icon */}
           <span className="hidden sm:inline">
@@ -47,9 +47,9 @@ const Header = () => {
         </Link>
         {/* Search bar for the home page */}
         {location.pathname === "/" && (
-          <div className="relative w-auto sm:w-1/3 md:w-1/2 xl:w-2/3 self-center">
+          <div className="relative w-auto md:w-1/2 xl:w-2/3 self-center">
             <input
-              className="rounded-2xl p-2 h-10 border-2 text-black border-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-600 md:w-full px-4 pr-10"
+              className="rounded-2xl p-2 h-10 border-2 text-black border-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-600 md:w-full px-2 lg:px-4 pr-10"
               type="text"
               name="task"
               value={searchTerm} // Binding input value to searchTerm state
