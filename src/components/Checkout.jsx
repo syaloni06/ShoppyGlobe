@@ -1,8 +1,12 @@
 import { BsSendCheckFill } from "react-icons/bs"; // Importing the Send Check icon
 import { useState } from "react"; // Importing useState hook
-
+import { Link } from "react-router-dom";
+import { RiShoppingBag4Fill } from "react-icons/ri";
+import { useDispatch } from "react-redux";
+import { clearCart } from "../utils/cartSlice";
 const CheckoutPage = () => {
   // State variables to handle payment method, order placement, form data, and form errors
+  const dispatch = useDispatch();
   const [paymentMethod, setPaymentMethod] = useState("credit-card");
   const [orderPlaced, setOrderPlaced] = useState(false);
   const [formData, setFormData] = useState({
@@ -232,7 +236,7 @@ const CheckoutPage = () => {
                     onChange={handleInputChange}
                     className={`w-full px-4 py-3 border rounded-md focus:ring-2 ${
                       errors.country ? "border-red-500" : "focus:ring-sky-600"
-                    } focus:outline-none col-span-full`}
+                    } focus:outline-none`}
                   />
                   {errors.country && (
                     <p className="text-red-500 text-sm">{errors.country}</p>
@@ -353,6 +357,7 @@ const CheckoutPage = () => {
               <button
                 type="submit"
                 className="w-full py-3 bg-sky-600 text-white text-xl sm:text-lg rounded-md font-bold hover:bg-sky-700 transition"
+                onClick={() => dispatch(clearCart())} //to clear the cart after placing order
               >
                 Place Order{/* Button Text */}
               </button>
@@ -368,6 +373,16 @@ const CheckoutPage = () => {
               Thank you for shopping with us. You will receive a confirmation
               email shortly.
             </p>
+            <Link
+              to="/"
+              className="flex justify-self-center gap-1 text-base sm:text-lg font-semibold text-sky-600 hover:underline"
+            >
+              <div className="flex gap-1">
+                Go to Home for More Shopping{/* Link text */}
+                <RiShoppingBag4Fill className="self-center text-xl" />
+                {/* Shop icon */}
+              </div>
+            </Link>
           </div>
         )}
       </div>

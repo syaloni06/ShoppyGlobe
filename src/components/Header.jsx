@@ -29,7 +29,7 @@ const Header = () => {
   return (
     <>
       <div className="flex justify-between bg-white text-sky-600 shadow-lg top-0 fixed w-full z-50 h-16">
-         {/* Logo and Home link */}
+        {/* Logo and Home link */}
         <Link
           to="/"
           onClick={() => {
@@ -38,10 +38,12 @@ const Header = () => {
           }}
           className="flex items-center text-2xl lg:text-3xl font-bold italic mx-2 sm:mx-6"
         >
-          <FaShopify className="text-4xl xl:text-5xl text-sky-600" />{/* Shopify icon */}
+          <FaShopify className="text-4xl xl:text-5xl text-sky-600" />
+          {/* Shopify icon */}
           <span className="hidden sm:inline">
             hoppyGl
-            <FaGlobeAsia className="hidden sm:inline self-center" />{/* Globe icon */}
+            <FaGlobeAsia className="hidden sm:inline self-center" />
+            {/* Globe icon */}
             be
           </span>
         </Link>
@@ -61,7 +63,8 @@ const Header = () => {
               className="absolute right-6 sm:right-4 top-1/2 transform -translate-y-1/2 text-sky-600 rounded-full h-8 w-8 flex items-center justify-center text-xl hover:scale-110"
               onClick={searchProduct} // Trigger product search on button click
             >
-              <FaSearch />{/* Search icon */}
+              <FaSearch />
+              {/* Search icon */}
             </button>
           </div>
         )}
@@ -72,10 +75,11 @@ const Header = () => {
             to={"/cart"}
             className="block sm:hidden text-lg hover:scale-110"
           >
-            <FaCartShopping className="text-2xl" />{/* Cart icon */}
+            <FaCartShopping className="text-2xl" />
+            {/* Cart icon */}
             {/* Display cart item count if items exist */}
-            {cartItems.length > 0 && ( 
-              <span className="absolute top-2 right-1 bg-red-500 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center">
+            {cartItems.length > 0 && (
+              <span className="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center">
                 {cartItems.length}
               </span>
             )}

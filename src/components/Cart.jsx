@@ -38,7 +38,7 @@ const Cart = () => {
             <>
               <p className="flex items-center gap-4 text-2xl md:text-4xl text-gray-500">
                 Opps! No items in the cart.
-                <MdRemoveShoppingCart className="text-2xl md:text-4xl"/>
+                <MdRemoveShoppingCart className="text-2xl md:text-4xl" />
               </p>
             </>
           )}
@@ -51,8 +51,12 @@ const Cart = () => {
             <div className="p-4 bg-gray-100 rounded-lg shadow-md w-full md:w-2/3 lg:w-full h-48 flex flex-col justify-center gap-10">
               {/* Display Total Amount */}
               <div className="flex gap-3">
-                <p className="text-2xl font-bold text-gray-700">Total Amount:</p>
-                <p className="text-2xl font-bold text-green-600">${cartTotal}</p>
+                <p className="text-2xl font-bold text-gray-700">
+                  Total Amount:
+                </p>
+                <p className="text-2xl font-bold text-green-600">
+                  ${cartTotal}
+                </p>
               </div>
 
               {/* Checkout Button */}

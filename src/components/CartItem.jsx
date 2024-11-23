@@ -43,7 +43,8 @@ const CartItem = (props) => {
         {/* Product Price */}
         <div className="flex items-center gap-2">
           <p className="text-green-600 font-bold text-base sm:text-xl">
-            ${(props.cart.price * props.cart.quantity).toFixed(2)} {/* Total price */}
+            ${(props.cart.price * props.cart.quantity).toFixed(2)}{" "}
+            {/* Total price */}
           </p>
           <span className="text-xs sm:text-sm text-red-500 font-bold">
             -{props.cart.discountPercentage}% {/* Discount percentage */}

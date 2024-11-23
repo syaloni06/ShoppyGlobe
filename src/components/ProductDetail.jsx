@@ -83,7 +83,8 @@ const ProductDetail = () => {
                   className="flex justify-center gap-2 text-white bg-sky-600 hover:bg-sky-700 w-full py-2 rounded-md font-bold text-sm sm:text-base"
                   onClick={() => dispatch(addItem(product))} // Dispatching an action to add the product to the cart
                 >
-                  Add To Cart <FaCartPlus className="text-lg sm:text-xl self-center" />
+                  Add To Cart{" "}
+                  <FaCartPlus className="text-lg sm:text-xl self-center" />
                 </button>
               )}
             </div>
