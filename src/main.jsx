@@ -10,6 +10,7 @@ import NotFound from "./components/NotFound.jsx";
 import { RouterProvider } from "react-router-dom";
 import { SearchProvider } from "./utils/SearchContext.jsx";
 import { ProductListProvider } from "./utils/ProductListContext.jsx";
+import { SearchFlagProvider } from "./utils/SearchFlagContext.jsx";
 
 // Lazy load the product detail component
 const ProductDetail = lazy(() => import("./components/ProductDetail.jsx"));
@@ -57,7 +58,9 @@ createRoot(document.getElementById("root")).render(
   <StrictMode>
     <ProductListProvider>
       <SearchProvider>
-        <RouterProvider router={appRouter} />
+        <SearchFlagProvider>
+          <RouterProvider router={appRouter} />
+        </SearchFlagProvider>
       </SearchProvider>
     </ProductListProvider>
   </StrictMode>
