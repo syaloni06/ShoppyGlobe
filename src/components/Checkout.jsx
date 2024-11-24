@@ -83,6 +83,7 @@ const CheckoutPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent page reload
     if (validateForm()) {
+      dispatch(clearCart());
       setOrderPlaced(true); // Set orderPlaced to true if validation passes
     }
   };
@@ -357,7 +358,7 @@ const CheckoutPage = () => {
               <button
                 type="submit"
                 className="w-full py-3 bg-sky-600 text-white text-xl sm:text-lg rounded-md font-bold hover:bg-sky-700 transition"
-                onClick={() => dispatch(clearCart())} //to clear the cart after placing order
+                 //to clear the cart after placing order
               >
                 Place Order{/* Button Text */}
               </button>
