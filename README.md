@@ -30,3 +30,5 @@ npm run dev
 2. Learning Resource: Practice key React features, such as props, state management, API integration, routing, and performance optimization.
 3. Portfolio Project: Showcase your ability to build a scalable React application to potential employers.
 4. Foundation for Expansion: Serve as a base for future development, including adding payment integration, user authentication, or advanced filtering.
+## Project Demo
+### Deployed Link - https://shoppyglobebysyaloni.netlify.app/
