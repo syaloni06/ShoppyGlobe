@@ -1,5 +1,6 @@
-import { useLocation, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { useState, useEffect } from "react";
 import { addItem } from "../utils/cartSlice";
 import { FaStar } from "react-icons/fa6";
 import { TbTruckReturn } from "react-icons/tb";
@@ -9,19 +10,50 @@ import { FaCartPlus } from "react-icons/fa";
 
 const ProductDetail = () => {
   const { id } = useParams(); // Extracting the product ID from the URL parameters
-  const location = useLocation(); // Accessing the current route's location object
   const dispatch = useDispatch(); // Hook to dispatch actions to the Redux store
+  const navigate = useNavigate(); // Hook for programmatic navigation
 
-  // Access the product data from location state
-  const product = location.state?.product; // Safely accessing the product object passed via navigation state
+  // State for the product details
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true); // Loading state
+  const [error, setError] = useState(null); // Error state
 
   // Get cart items from Redux
-  const cartItems = useSelector((state) => state.cart.data); // Selecting cart data from the Redux store
+  const cartItems = useSelector((state) => state.cart.data);
 
   // Check if the product is already in the cart
-  const productInCart = cartItems.find((item) => item.id === Number(id)); // Finding the product in the cart by matching the ID
+  const productInCart = cartItems.find((item) => item.id === Number(id));
 
-  const navigate = useNavigate(); // Hook for programmatic navigation
+  // Fetch product details when the component mounts
+  useEffect(() => {
+    const fetchProductDetails = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(`https://dummyjson.com/products/${id}`); // Replace with your API endpoint
+        if (!response.ok) {
+          throw new Error("Failed to fetch product details");
+        }
+        const data = await response.json();
+        setProduct(data);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProductDetails();
+  }, [id]);
+
+  // Show loading state
+  if (loading) {
+    return <p>Loading product details...</p>;
+  }
+
+  // Show error state
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
 
   // If product data is not found, show a fallback message
   if (!product) {
@@ -40,7 +72,6 @@ const ProductDetail = () => {
           >
             <IoArrowBackCircle className="text-4xl sm:text-5xl" />
           </button>
-
           {/* Product Image and Basic Details */}
           <div className="flex flex-col sm:flex-row">
             <div className="w-full sm:w-1/3">
@@ -89,7 +120,6 @@ const ProductDetail = () => {
               )}
             </div>
           </div>
-
           {/* Additional Information */}
           <div className="mt-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">

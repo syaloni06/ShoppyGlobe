@@ -49,7 +49,7 @@ const Header = () => {
         </Link>
         {/* Search bar for the home page */}
         {location.pathname === "/" && (
-          <div className="relative w-auto md:w-1/2 xl:w-2/3 self-center">
+          <div className="relative w-auto md:w-3/6 self-center">
             <input
               className="rounded-2xl p-2 h-10 border-2 text-black border-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-600 md:w-full px-2 lg:px-4 pr-10"
               type="text"
