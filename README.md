@@ -32,3 +32,4 @@ npm run dev
 4. Foundation for Expansion: Serve as a base for future development, including adding payment integration, user authentication, or advanced filtering.
 ## Project Demo
 ### Deployed Link - https://shoppyglobebysyaloni.netlify.app/
+![Preview](https://github.com/user-attachments/assets/ee3c123f-9bd1-467e-be7c-e0da10e4cc22)
